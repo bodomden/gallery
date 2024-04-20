@@ -1,7 +1,7 @@
 <?php
 require_once 'dbcon.php';
 
-class ImageModel
+class ImageModels
 {
     public $db;
 

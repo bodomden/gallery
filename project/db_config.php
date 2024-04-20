@@ -1,8 +1,6 @@
 <?php
 
-return [
-    'HOSTNAME' => 'localhost',
-    'USERNAME' => 'root',
-    'PASSWORD' => '',
-    'DATABASE' => 'galery'
-];
+$db_host = 'localhost';
+$db_user = 'root';
+$db_pass = '';
+$db_name = 'galery';
