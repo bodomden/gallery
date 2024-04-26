@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6 border ps-2">
-        <form action="/album/" method="post" name="form">
+        <form action="/album" method="post" name="form">
             <div class="form-group mb-3">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name:</label>

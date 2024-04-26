@@ -9,14 +9,21 @@ require_once 'main/view.php';
 
 $router = new Router(new Request);
 
+#album
 $router->get('', 'main', 'index');
-$router->get('album/', 'album', 'index');
-$router->get('album/create/', 'album', 'create');
-$router->post('album/', 'album', 'store');
-$router->get('album/{id}/', 'album', 'show');
-$router->get('album/{id}/edit/', 'album', 'edit');
-$router->update('album/{id}/', 'album', 'update');
-$router->delete('album/{id}/', 'album', 'delete');
+$router->get('album', 'album', 'index');
+$router->get('album/create', 'album', 'create');
+$router->post('album', 'album', 'store');
+$router->get('album/{id}', 'album', 'show');
+$router->get('album/{id}/edit', 'album', 'edit');
+$router->put('album/{id}', 'album', 'update');
+$router->delete('album/{id}', 'album', 'delete');
+$router->get('album/{id}/add', 'album', 'addImage');
 
+#image
+$router->get('image/{id}', 'image', 'show');
+$router->patch('image', 'image', 'status');
+$router->post('image', 'image', 'store');
 
-#убрать слеши в конце урл
+#comment
+$router->post('comment', 'comment', 'store');

@@ -24,11 +24,11 @@ body {
 a {
     display: inline-block;
     color: var(--text-color);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
+    color: var(--contrast-color);
 }
 
 img {
@@ -65,3 +65,8 @@ ul.info-icons {
     list-style: none;    
 
 }
+
+.non-a {
+    pointer-events: none;
+    cursor: default;
+  }

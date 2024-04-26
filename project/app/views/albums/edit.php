@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-md-6 border ps-2">
-        <form action="/album/<?php echo $album->id ?>/update" method="post" name="form">
+        <form action="/album/<?php echo $album->id ?>" method="post" name="form">
+            <input type="hidden" name="_method" value="PUT">
             <div class="form-group mb-3">
                 <div class="mb-3">
                     <label for="name" class="form-label">Title:</label>

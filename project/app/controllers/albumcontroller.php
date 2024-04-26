@@ -2,12 +2,6 @@
 
 class AlbumController extends Controller
 {
-	/*public function __construct()
-	{
-		$this->model = new AlbumModel();
-		$this->view = new View();
-	}*/
-
 	public function index()
 	{
 		$data = $this->model->get_all();
@@ -27,7 +21,7 @@ class AlbumController extends Controller
 	{
 		$this->model->create($data);
 
-		header('Location: /album/');
+		header('Location: /album');
 	}
 
 	public function show($id)
@@ -51,12 +45,29 @@ class AlbumController extends Controller
 		$this->view->render('albums/edit.php', compact('album', 'title', 'desc', 'name'));
 	}
 
-	public function update($id)
+	public function update($data, $id)
 	{
-		$data = $_POST;
+		unset($data['_method']);
 		$data['id'] = $id;
 		$this->model->update($data);
 
-		header("Location: /album/$id/show/");
+		header("Location: /album/$id");
+	}
+
+	public function delete($id)
+	{
+		$this->model->delete($id);
+
+		header("Location: /album");
+	}
+
+	public function addImage($album_id)
+	{
+		$title = 'Add a new image';
+		$desc = 'Set parameters of a new image';
+		$album = $this->model->find($album_id);
+		$name = $album->name;
+
+		$this->view->render('image/create.php', compact('album_id', 'title', 'desc', 'name'));
 	}
 }

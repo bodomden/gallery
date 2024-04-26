@@ -6,22 +6,15 @@ class View
     protected function breadcrumbs($name = null)
     {
 
-        $paths = explode("/", $_SERVER["REQUEST_URI"]);
-        $paths[0] = 'main';
+        $paths = explode("/", ltrim($_SERVER["REQUEST_URI"], '/'));
         $paths = array_flip($paths);
-        $prefix = '';
+        $prefix = '/';
         $breads = [];
         foreach ($paths as $key => $value) {
-            if ($key == 'show') {
-                continue;
-            }
-            $paths[$key] = match ($key) {
-                'main' => $prefix . '/',
-                default => $prefix . $key . '/',
-            };
+            $paths[$key] = $prefix . $key . '/';
             $prefix = $paths[$key];
             if (preg_match("/\d+/", $key)) {
-                $breads[$name] = $paths[$key] . 'show/';
+                $breads[$name] = $paths[$key];
                 continue;
             }
             $breads[$key] = $paths[$key];

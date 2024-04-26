@@ -26,9 +26,10 @@
         <div class="container-fluid">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mt-2">
+                    <li class="breadcrumb-item"><a href="/">Main</a></li>
                     <?php
                     foreach ($breads as $bread => $link) { ?>
-                        <li class="breadcrumb-item"><a href="<?php echo $link; ?>"><?php echo ucfirst($bread); ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo rtrim($link, '/'); ?>"><?php echo ucfirst($bread); ?></a></li>
                     <?php } ?>
                 </ol>
             </nav>

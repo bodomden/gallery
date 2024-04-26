@@ -15,14 +15,10 @@ class Controller
         $model_name = str_replace('Controller', 'Model', get_class($this));
         $model_file = "app/models/" . strtolower($model_name) . '.php';
         if (file_exists($model_file)) {
-            include $model_file;
+            include_once $model_file;
         } else {
             return;
         }
         $this->model = new $model_name();
-    }
-
-    function index()
-    {
     }
 }

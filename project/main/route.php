@@ -16,7 +16,7 @@ class Route
 
     public function parseId($uri)
     {
-        if (preg_match("~.+\/(\d+)\/.*~", $uri, $matches)) {
+        if (preg_match("~.+\/(\d+)\/*.*~", $uri, $matches)) {
             $this->id = $matches[1];
             $uri = str_replace($this->id, '{id}', $uri);
         }
@@ -35,7 +35,7 @@ class Route
     {
         $controller = ucfirst($this->controller) . 'Controller';
         $controller_file = strtolower($controller) . '.php';
-        include "app/controllers/" . $controller_file;
+        include_once "app/controllers/" . $controller_file;
 
         $controller = new $controller;
 

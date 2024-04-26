@@ -10,7 +10,7 @@ abstract class Model
     public function __construct()
     {
         $this->class_name = get_class($this);
-        $this->table_name = strtolower(substr($this->class_name, 0, 5));
+        $this->table_name = strtolower(substr($this->class_name, 0, -5));
     }
 
     public function get_all()
@@ -32,8 +32,8 @@ abstract class Model
     {
         $model_file = $many . 'model' . '.php';
         $model_class = ucfirst($many) . 'Model';
-        include "app/models/" . $model_file;
-        $sth = DBcon::prepare("SELECT b.*  FROM $many as b JOIN $this->table_name as a ON a.id = b.album_id WHERE a.id = ?");
+        include_once "app/models/" . $model_file;
+        $sth = DBcon::prepare("SELECT b.*  FROM $many as b JOIN $this->table_name as a ON a.id = b.{$this->table_name}_id WHERE a.id = ?");
         $sth->execute([$id]);
 
         return $sth->fetchAll(PDO::FETCH_CLASS, $model_class);
@@ -43,5 +43,11 @@ abstract class Model
     {
         $sth = DBcon::prepare("UPDATE $this->table_name SET name= :name, description= :description WHERE id= :id");
         $sth->execute($data);
+    }
+
+    public function delete($id)
+    {
+        $sth = DBcon::prepare("DELETE FROM $this->table_name WHERE id = ?");
+        $sth->execute([$id]);
     }
 }
