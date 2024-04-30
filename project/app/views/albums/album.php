@@ -28,7 +28,7 @@
         </div>
     </div>
 </div>
-<?php include 'app/views/albums/commentmodal.php' ?>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/app/views/albums/commentmodal.php' ?>
 <div class="mt-2">
     <p><a href="/album/<?php echo $id; ?>/add" style="font-weight: bold;">Add image</a></p>
     <p><a href="/album/<?php echo $id; ?>/edit" style="font-weight: bold;">Edit album</a></p>

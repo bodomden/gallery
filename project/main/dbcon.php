@@ -14,7 +14,7 @@ class DBcon
     public static function instance()
     {
         if (self::$instance === null) {
-            require_once './db_config.php';
+            require_once  $_SERVER['DOCUMENT_ROOT'] . '/db_config.php';
             $dsn = "mysql:host=$db_host;dbname=$db_name;charset=UTF8";
             self::$instance = new PDO($dsn, $db_user, $db_pass);
         }

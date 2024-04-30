@@ -32,7 +32,7 @@ abstract class Model
     {
         $model_file = $many . 'model' . '.php';
         $model_class = ucfirst($many) . 'Model';
-        include_once "app/models/" . $model_file;
+        include_once  $_SERVER['DOCUMENT_ROOT'] . "/app/models/" . $model_file;
         $sth = DBcon::prepare("SELECT b.*  FROM $many as b JOIN $this->table_name as a ON a.id = b.{$this->table_name}_id WHERE a.id = ?");
         $sth->execute([$id]);
 

@@ -35,7 +35,7 @@ class Route
     {
         $controller = ucfirst($this->controller) . 'Controller';
         $controller_file = strtolower($controller) . '.php';
-        include_once "app/controllers/" . $controller_file;
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/app/controllers/" . $controller_file;
 
         $controller = new $controller;
 

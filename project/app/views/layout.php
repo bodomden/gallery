@@ -41,7 +41,7 @@
                     <h2><?php echo $desc; ?></h2>
                 </div>
             </div>
-            <?php include 'app/views/' . $content; ?>
+            <?php include_once  $_SERVER['DOCUMENT_ROOT'] . '/app/views/' . $content; ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

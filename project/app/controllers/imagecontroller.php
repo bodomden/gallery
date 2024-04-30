@@ -22,7 +22,7 @@ class ImageController extends Controller
                 $err = 'File is not image, try again.';
                 return compact('err');
             }
-            $uploadTo = "./upload/";
+            $uploadTo = $_SERVER['DOCUMENT_ROOT'] . "/upload/";
             $imageName = $image['name'];
 
             move_uploaded_file($image["tmp_name"], $uploadTo . $imageName);

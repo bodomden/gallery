@@ -14,9 +14,9 @@ CREATE SCHEMA IF NOT EXISTS `Galery` DEFAULT CHARACTER SET utf8 ;
 USE `Galery` ;
 
 -- -----------------------------------------------------
--- Table `Galery`.`Album`
+-- Table `Galery`.`album`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Galery`.`Album` (
+CREATE TABLE IF NOT EXISTS `Galery`.`album` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
@@ -25,9 +25,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Galery`.`Image`
+-- Table `Galery`.`image`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Galery`.`Image` (
+CREATE TABLE IF NOT EXISTS `Galery`.`image` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `title` VARCHAR(45) NOT NULL,
@@ -37,27 +37,27 @@ CREATE TABLE IF NOT EXISTS `Galery`.`Image` (
   `comment` INT NULL DEFAULT 0,
   `album_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Image_Album_idx` (`album_id` ASC),
-  CONSTRAINT `fk_Image_Album`
+  INDEX `fk_image_album_idx` (`album_id` ASC),
+  CONSTRAINT `fk_image_album`
     FOREIGN KEY (`album_id`)
-    REFERENCES `Galery`.`Album` (`id`)
+    REFERENCES `Galery`.`album` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Galery`.`Comment`
+-- Table `Galery`.`comment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Galery`.`Comment` (
+CREATE TABLE IF NOT EXISTS `Galery`.`comment` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `comment` VARCHAR(255) NOT NULL,
-  `Image_id` INT NOT NULL,
+  `image_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Comment_Image1_idx` (`Image_id` ASC),
-  CONSTRAINT `fk_Comment_Image1`
-    FOREIGN KEY (`Image_id`)
-    REFERENCES `Galery`.`Image` (`id`)
+  INDEX `fk_comment_image1_idx` (`image_id` ASC),
+  CONSTRAINT `fk_comment_image1`
+    FOREIGN KEY (`image_id`)
+    REFERENCES `Galery`.`image` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

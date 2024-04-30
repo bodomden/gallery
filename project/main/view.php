@@ -31,6 +31,6 @@ class View
 
         $breads = $this->breadcrumbs($name);
 
-        include 'app/views/' . $this->template;
+        include_once $_SERVER['DOCUMENT_ROOT'] . '/app/views/' . $this->template;
     }
 }

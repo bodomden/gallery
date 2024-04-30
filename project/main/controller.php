@@ -13,7 +13,7 @@ class Controller
     private function loadModel()
     {
         $model_name = str_replace('Controller', 'Model', get_class($this));
-        $model_file = "app/models/" . strtolower($model_name) . '.php';
+        $model_file =  $_SERVER['DOCUMENT_ROOT'] . "/app/models/" . strtolower($model_name) . '.php';
         if (file_exists($model_file)) {
             include_once $model_file;
         } else {
